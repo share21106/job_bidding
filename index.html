@@ -1,0 +1,671 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Brand Lift Co</title>
+  <meta name="description" content="Brand Lift Co helps founders scale with paid media, content systems, and conversion design. Apply for a growth audit." />
+  <link rel="icon" type="image/png" sizes="120x20" href="assets/tab_logo.png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              200: '#bfdbfe',
+              300: '#93c5fd',
+              400: '#60a5fa',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+              800: '#1e40af',
+              900: '#1e3a8a'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+     /* Create favicon using CSS */
+        .custom-favicon {
+            background: url('./assets/tab_logo.png') no-repeat center center;
+            background-size: 120px 20px;
+        }
+        
+        /* Hide default favicon area */
+        link[rel="icon"] {
+            display: none;
+        }
+
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+    * {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    }
+
+    .grid-bg {
+      background-image: radial-gradient(rgba(37,99,235,.08) 1px, transparent 1px);
+      background-size: 20px 20px;
+      animation: gridMove 20s linear infinite;
+    }
+
+    @keyframes gridMove {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(20px, 20px); }
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #1d4ed8 0%, #3b82f6 50%, #8b5cf6 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      background-size: 200% 200%;
+      animation: gradientShift 3s ease-in-out infinite;
+    }
+
+    @keyframes gradientShift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    .floating {
+      animation: floating 6s ease-in-out infinite;
+    }
+
+    @keyframes floating {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+
+    .fade-in {
+      animation: fadeIn 0.8s ease-out forwards;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .slide-in-left {
+      animation: slideInLeft 0.8s ease-out forwards;
+      opacity: 0;
+      transform: translateX(-50px);
+    }
+
+    @keyframes slideInLeft {
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .slide-in-right {
+      animation: slideInRight 0.8s ease-out forwards;
+      opacity: 0;
+      transform: translateX(50px);
+    }
+
+    @keyframes slideInRight {
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .pulse-glow {
+      animation: pulseGlow 2s ease-in-out infinite;
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 0 20px rgba(37, 99, 235, 0.3); }
+      50% { box-shadow: 0 0 40px rgba(37, 99, 235, 0.6); }
+    }
+
+    .card-hover {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .card-hover:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    }
+
+    .text-shimmer {
+      background: linear-gradient(90deg, #1d4ed8, #3b82f6, #8b5cf6, #3b82f6, #1d4ed8);
+      background-size: 200% 100%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: shimmer 3s linear infinite;
+    }
+
+    @keyframes shimmer {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
+
+    .glass-effect {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .hero-bg {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+      animation: grain 8s steps(10) infinite;
+    }
+
+    @keyframes grain {
+      0%, 100% { transform: translate(0, 0); }
+      10% { transform: translate(-5%, -10%); }
+      20% { transform: translate(-15%, 5%); }
+      30% { transform: translate(6%, -25%); }
+      40% { transform: translate(-5%, 25%); }
+      50% { transform: translate(-15%, 10%); }
+      60% { transform: translate(15%, 0%); }
+      70% { transform: translate(0%, 15%); }
+      80% { transform: translate(3%, 35%); }
+      90% { transform: translate(-10%, 10%); }
+    }
+  </style>
+  <script>
+    // Add scroll-triggered animations
+    document.addEventListener('DOMContentLoaded', function() {
+      // Intersection Observer for fade-in animations
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.animationDelay = '0.2s';
+            entry.target.classList.add('fade-in');
+          }
+        });
+      }, observerOptions);
+
+      // Observe all sections
+      document.querySelectorAll('section').forEach(section => {
+        observer.observe(section);
+      });
+
+      // Add hover effects to cards
+      document.querySelectorAll('.card-hover').forEach(card => {
+        card.addEventListener('mouseenter', function() {
+          this.style.transform = 'translateY(-8px)';
+        });
+
+        card.addEventListener('mouseleave', function() {
+          this.style.transform = 'translateY(0)';
+        });
+      });
+
+      // Smooth scrolling for navigation links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        });
+      });
+
+      // FAQ Accordion functionality
+      document.querySelectorAll('.faq-button').forEach(button => {
+        button.addEventListener('click', function() {
+          const faqItem = this.closest('.faq-item');
+          const answer = this.querySelector('.faq-answer');
+          const icon = this.querySelector('.faq-icon');
+          const isExpanded = this.getAttribute('aria-expanded') === 'true';
+
+          if (isExpanded) {
+            // Collapse
+            answer.style.opacity = '0';
+            answer.style.maxHeight = '0';
+            icon.textContent = '+';
+            this.setAttribute('aria-expanded', 'false');
+          } else {
+            // Expand
+            answer.style.opacity = '1';
+            answer.style.maxHeight = answer.scrollHeight + 'px';
+            icon.textContent = '−';
+            this.setAttribute('aria-expanded', 'true');
+          }
+        });
+      });
+    });
+  </script>
+</head>
+<body class="antialiased bg-slate-50 text-slate-900">
+  <!-- Header -->
+  <header class="sticky top-0 z-40 backdrop-blur-md bg-white/80 border-b border-slate-200/60 shadow-sm">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="relative">
+          <img src="assets/logo_black.png" class="h-9 w-9 object-contain group-hover:hidden transition-transform duration-300" alt="Brand Lift Co logo">
+          <img src="assets/favicon_blue.png" class="h-9 w-9 object-contain hidden group-hover:block group-hover:scale-110 transition-transform duration-300" alt="Brand Lift Co logo">
+        </div>
+      </a>
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+
+        <a href="#services" class="text-slate-600 hover:text-primary-700 transition-colors duration-300 relative group">
+          Services
+          <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary-700 group-hover:w-full transition-all duration-300"></span>
+        </a>
+                <a href="#proof" class="text-slate-600 hover:text-primary-700 transition-colors duration-300 relative group">
+          Proof
+          <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary-700 group-hover:w-full transition-all duration-300"></span>
+        </a>
+        <a href="#work" class="text-slate-600 hover:text-primary-700 transition-colors duration-300 relative group">
+          Case Studies
+          <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary-700 group-hover:w-full transition-all duration-300"></span>
+        </a>
+        <a href="#faq" class="text-slate-600 hover:text-primary-700 transition-colors duration-300 relative group">
+          FAQ
+          <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary-700 group-hover:w-full transition-all duration-300"></span>
+        </a>
+        <a href="apply.html" class="inline-flex items-center rounded-xl bg-gradient-to-r from-primary-600 to-primary-700 text-white px-6 py-2.5 font-semibold hover:from-primary-700 hover:to-primary-800 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 pulse-glow">
+          Apply Now
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="relative overflow-hidden min-h-screen flex items-center">
+    <div class="absolute inset-0 grid-bg"></div>
+    <div class="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-purple-50"></div>
+    <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 lg:py-28 grid lg:grid-cols-2 gap-16 items-center">
+      <div class="slide-in-left">
+        <span class="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-primary-100 to-purple-100 text-primary-700 text-sm px-4 py-2 font-semibold shadow-sm">
+          <span class="w-2 h-2 bg-primary-500 rounded-full animate-pulse"></span>
+          Limited openings available
+        </span>
+        <h1 class="mt-6 text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-tight">
+          Performance brand scaling for
+          <span class="gradient-text block mt-2">e‑com & local</span>
+        </h1>
+        <p class="mt-8 text-slate-600 text-xl leading-relaxed max-w-2xl">
+          We install content systems, paid media, and conversion design to create predictable acquisition. Get a free growth audit to see if we can lift your brand this quarter.
+        </p>
+        <div class="mt-10 flex flex-col sm:flex-row gap-4 sm:items-center">
+          <a href="apply.html" class="group inline-flex items-center justify-center rounded-2xl bg-gradient-to-r from-primary-600 to-primary-700 text-white px-8 py-4 font-bold text-lg hover:from-primary-700 hover:to-primary-800 shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:scale-105 pulse-glow">
+            <span>Apply for Growth Audit</span>
+            <svg class="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+            </svg>
+          </a>
+          <a href="#work" class="group inline-flex items-center justify-center rounded-2xl border-2 border-slate-300 px-8 py-4 font-semibold text-lg hover:bg-slate-50 hover:border-primary-300 hover:text-primary-700 transition-all duration-300 transform hover:scale-105">
+            <span>See results</span>
+            <svg class="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+            </svg>
+          </a>
+        </div>
+        <div class="mt-8 flex items-center gap-6 text-sm text-slate-500">
+          <div class="flex items-center gap-2">
+            <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+            <span>100% privacy</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <div class="w-2 h-2 bg-blue-500 rounded-full"></div>
+            <span>No spam</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <div class="w-2 h-2 bg-purple-500 rounded-full"></div>
+            <span>Free audit</span>
+          </div>
+        </div>
+      </div>
+      <div class="slide-in-right">
+        <div class="relative group">
+          <div class="absolute -inset-4 bg-gradient-to-r from-primary-600 to-purple-600 rounded-3xl blur opacity-30 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
+          <div class="relative rounded-3xl border border-slate-200 shadow-2xl bg-white overflow-hidden card-hover">
+            <div class="bg-gradient-to-r from-slate-900 to-slate-800 text-white px-6 py-3 text-sm font-semibold flex items-center gap-2">
+              <div class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+              Live Case Study Snapshot
+            </div>
+            <div class="p-8 grid md:grid-cols-3 gap-6">
+              <div class="p-6 rounded-2xl bg-gradient-to-br from-primary-50 to-primary-100 border border-primary-200 group-hover:scale-105 transition-transform duration-300">
+                <div class="text-xs font-semibold text-slate-600 mb-2">Ad ROAS (90d)</div>
+                <div class="text-3xl font-black text-primary-700 mb-3">3.8×</div>
+                <div class="w-full bg-primary-200 rounded-full h-2">
+                  <div class="bg-gradient-to-r from-primary-500 to-primary-600 h-2 rounded-full w-4/5 animate-pulse"></div>
+                </div>
+              </div>
+              <div class="p-6 rounded-2xl bg-gradient-to-br from-green-50 to-green-100 border border-green-200 group-hover:scale-105 transition-transform duration-300">
+                <div class="text-xs font-semibold text-slate-600 mb-2">CAC ↓</div>
+                <div class="text-3xl font-black text-green-700 mb-3">‑27%</div>
+                <div class="w-full bg-green-200 rounded-full h-2">
+                  <div class="bg-gradient-to-r from-green-500 to-green-600 h-2 rounded-full w-3/4 animate-pulse"></div>
+                </div>
+              </div>
+              <div class="p-6 rounded-2xl bg-gradient-to-br from-purple-50 to-purple-100 border border-purple-200 group-hover:scale-105 transition-transform duration-300">
+                <div class="text-xs font-semibold text-slate-600 mb-2">Leads/mo</div>
+                <div class="text-3xl font-black text-purple-700 mb-3">+142</div>
+                <div class="w-full bg-purple-200 rounded-full h-2">
+                  <div class="bg-gradient-to-r from-purple-500 to-purple-600 h-2 rounded-full w-5/6 animate-pulse"></div>
+                </div>
+              </div>
+            </div>
+            <div class="relative overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=1600&auto=format&fit=crop" alt="Analytics preview" class="w-full h-64 object-cover"/>
+              <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- Services -->
+  <section id="services" class="px-4 sm:px-6 lg:px-8 py-24 bg-slate-50">
+    <div class="mx-auto max-w-7xl">
+      <div class="text-center mb-16 fade-in">
+        <h2 class="text-4xl sm:text-5xl font-black tracking-tight mb-6">
+          Our <span class="gradient-text">Performance</span> Services
+        </h2>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+          We combine data-driven strategies with creative excellence to scale your brand across all channels
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="group p-8 rounded-3xl border border-slate-200 shadow-lg card-hover bg-white relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-primary-100 to-primary-200 rounded-full -translate-y-16 translate-x-16 opacity-50"></div>
+          <div class="relative z-10">
+            <div class="text-4xl mb-4">🎯</div>
+            <h3 class="text-2xl font-bold mb-4 group-hover:text-primary-700 transition-colors duration-300">Paid Media</h3>
+            <p class="text-slate-600 leading-relaxed mb-6">Meta, TikTok, and YouTube acquisition with creative testing frameworks and weekly sprints.</p>
+            <div class="flex items-center text-primary-600 font-semibold group-hover:translate-x-2 transition-transform duration-300">
+              Learn more
+              <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="group p-8 rounded-3xl border border-slate-200 shadow-lg card-hover bg-white relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-green-100 to-green-200 rounded-full -translate-y-16 translate-x-16 opacity-50"></div>
+          <div class="relative z-10">
+            <div class="text-4xl mb-4">🎥</div>
+            <h3 class="text-2xl font-bold mb-4 group-hover:text-green-700 transition-colors duration-300">UGC & Content Ops</h3>
+            <p class="text-slate-600 leading-relaxed mb-6">Creator sourcing, briefs, and an always‑on content engine for hooks, angles, and offers.</p>
+            <div class="flex items-center text-green-600 font-semibold group-hover:translate-x-2 transition-transform duration-300">
+              Learn more
+              <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="group p-8 rounded-3xl border border-slate-200 shadow-lg card-hover bg-white relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-purple-100 to-purple-200 rounded-full -translate-y-16 translate-x-16 opacity-50"></div>
+          <div class="relative z-10">
+            <div class="text-4xl mb-4 inline-block scale-x-[-1]">🛒</div>
+            <h3 class="text-2xl font-bold mb-4 group-hover:text-purple-700 transition-colors duration-300">Ad Management & Social Media</h3>
+            <p class="text-slate-600 leading-relaxed mb-6">Managing ad campaigns and running social media to maximize reach and performance.</p>
+            <div class="flex items-center text-purple-600 font-semibold group-hover:translate-x-2 transition-transform duration-300">
+              Learn more
+              <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Reasons / Benefits -->
+      <div class="mt-20 grid md:grid-cols-3 gap-8">
+        <div class="group p-8 rounded-2xl bg-gradient-to-br from-slate-50 to-slate-100 border border-slate-200 card-hover">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 bg-primary-100 rounded-xl flex items-center justify-center">
+              <svg class="w-5 h-5 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+              </svg>
+            </div>
+            <div class="font-bold text-lg">Weekly Sprints</div>
+          </div>
+          <p class="text-slate-600 leading-relaxed">We ship creative tests and landing updates every week — speed wins.</p>
+        </div>
+
+        <div class="group p-8 rounded-2xl bg-gradient-to-br from-slate-50 to-slate-100 border border-slate-200 card-hover">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 bg-green-100 rounded-xl flex items-center justify-center">
+              <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+              </svg>
+            </div>
+            <div class="font-bold text-lg">Creator Network</div>
+          </div>
+          <p class="text-slate-600 leading-relaxed">Access vetted UGC creators for hooks, angles, and offers.</p>
+        </div>
+
+        <div class="group p-8 rounded-2xl bg-gradient-to-br from-slate-50 to-slate-100 border border-slate-200 card-hover">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 bg-purple-100 rounded-xl flex items-center justify-center">
+              <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+              </svg>
+            </div>
+            <div class="font-bold text-lg">Performance Reporting</div>
+          </div>
+          <p class="text-slate-600 leading-relaxed">Clear dashboards focused on CAC, ROAS, and revenue — not vanity metrics.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <!-- Proof: Clients & Logos -->
+  <section id="proof" class="relative overflow-hidden bg-slate-50">
+    <div class="absolute inset-0"></div>
+    <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl sm:text-4xl font-black mb-4">
+          Trusted by <span class="gradient-text">founders & operators</span>
+        </h2>
+        <p class="text-lg text-slate-600 max-w-2xl mx-auto">
+          Select brands our team has helped scale across e-commerce and local markets
+        </p>
+      </div>
+
+      <div class="relative">
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-8 place-items-center">
+          <div class="group p-6 rounded-2xl bg-white/60 backdrop-blur-sm border border-slate-200/60 shadow-sm hover:shadow-lg hover:bg-white/80 transition-all duration-300 hover:scale-105 cursor-pointer">
+            <p class="text-slate-700 font-semibold text-center group-hover:scale-110 transition-transform duration-300">Nova Skincare</p>
+          </div>
+          <div class="group p-6 rounded-2xl bg-white/60 backdrop-blur-sm border border-slate-200/60 shadow-sm hover:shadow-lg hover:bg-white/80 transition-all duration-300 hover:scale-105 cursor-pointer">
+            <p class="text-slate-700 font-semibold text-center group-hover:scale-110 transition-transform duration-300">Peak Supps</p>
+          </div>
+          <div class="group p-6 rounded-2xl bg-white/60 backdrop-blur-sm border border-slate-200/60 shadow-sm hover:shadow-lg hover:bg-white/80 transition-all duration-300 hover:scale-105 cursor-pointer">
+            <p class="text-slate-700 font-semibold text-center group-hover:scale-110 transition-transform duration-300">Sprint Fit</p>
+          </div>
+          <div class="group p-6 rounded-2xl bg-white/60 backdrop-blur-sm border border-slate-200/60 shadow-sm hover:shadow-lg hover:bg-white/80 transition-all duration-300 hover:scale-105 cursor-pointer">
+            <p class="text-slate-700 font-semibold text-center group-hover:scale-110 transition-transform duration-300">Glow Med Spa</p>
+          </div>
+          <div class="group p-6 rounded-2xl bg-white/60 backdrop-blur-sm border border-slate-200/60 shadow-sm hover:shadow-lg hover:bg-white/80 transition-all duration-300 hover:scale-105 cursor-pointer">
+            <p class="text-slate-700 font-semibold text-center group-hover:scale-110 transition-transform duration-300">Vital Labs</p>
+          </div>
+          <div class="group p-6 rounded-2xl bg-white/60 backdrop-blur-sm border border-slate-200/60 shadow-sm hover:shadow-lg hover:bg-white/80 transition-all duration-300 hover:scale-105 cursor-pointer">
+            <p class="text-slate-700 font-semibold text-center group-hover:scale-110 transition-transform duration-300">Urban Cafe</p>
+          </div>
+        </div>
+
+        <!-- Decorative elements -->
+        <!-- <div class="absolute -top-4 -left-4 w-24 h-24 bg-gradient-to-br from-primary-100 to-purple-100 rounded-full blur-xl opacity-50"></div> -->
+        <!-- <div class="absolute -bottom-4 -right-4 w-32 h-32 bg-gradient-to-br from-blue-100 to-primary-100 rounded-full blur-xl opacity-50"></div> -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Case Studies -->
+  <section id="work" class="bg-slate-50">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
+      <h2 class="text-2xl font-bold">Recent outcomes</h2>
+      <div class="mt-8 grid md:grid-cols-3 gap-6">
+        <div class="rounded-2xl border border-slate-200 bg-white p-6">
+          <div class="text-xs text-slate-500">Skincare DTC</div>
+          <div class="mt-1 text-2xl font-semibold">$120k → $310k/mo</div>
+          <p class="mt-2 text-sm text-slate-600">Scaled with 12 new UGC angles and a high‑ticket bundle funnel.</p>
+        </div>
+        <div class="rounded-2xl border border-slate-200 bg-white p-6">
+          <div class="text-xs text-slate-500">Local Med‑Spa</div>
+          <div class="mt-1 text-2xl font-semibold">+87 qualified leads</div>
+          <p class="mt-2 text-sm text-slate-600">Lead gen via TikTok + Meta with instant‑book landing.</p>
+        </div>
+        <div class="rounded-2xl border border-slate-200 bg-white p-6">
+          <div class="text-xs text-slate-500">Supplements</div>
+          <div class="mt-1 text-2xl font-semibold">‑22% CAC</div>
+          <p class="mt-2 text-sm text-slate-600">Offer restructure + creative testing matrix.</p>
+        </div>
+      </div>
+
+      <div class="mt-10 text-center">
+        <a href="apply.html" class="inline-flex items-center rounded-2xl bg-black text-white px-6 py-3 font-medium hover:bg-slate-800">Apply Now</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="testimonials" class="px-4 sm:px-6 lg:px-8 py-20 bg-slate-50">
+    <div class="mx-auto max-w-7xl">
+      <h2 class="text-2xl font-bold text-center">What clients say</h2>
+      <div class="mt-8 grid md:grid-cols-3 gap-6">
+        <figure class="rounded-2xl border border-slate-200 p-6 bg-white shadow-sm">
+          <blockquote class="text-slate-700">“Brand Lift Co rebuilt our offer and creative stack — revenue doubled in 8 weeks.”</blockquote>
+          <figcaption class="mt-3 text-sm text-slate-500">— Mia R., Founder, Nova Skincare</figcaption>
+        </figure>
+        <figure class="rounded-2xl border border-slate-200 p-6 bg-white shadow-sm">
+          <blockquote class="text-slate-700">“Clear testing roadmap and weekly sprints. CAC dropped and booking volume jumped.”</blockquote>
+          <figcaption class="mt-3 text-sm text-slate-500">— Dr. Chen, Owner, Glow Med Spa</figcaption>
+        </figure>
+        <figure class="rounded-2xl border border-slate-200 p-6 bg-white shadow-sm">
+          <blockquote class="text-slate-700">“Finally a team that owns content + ads + CRO. Communication is A+.”</blockquote>
+          <figcaption class="mt-3 text-sm text-slate-500">— Aaron T., CEO, Flow State</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Guarantee / Risk Reversal -->
+  <section class="bg-slate-900 text-white">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 grid md:grid-cols-3 gap-6">
+      <div class="md:col-span-2">
+        <h3 class="text-2xl font-semibold">30‑Day Performance Checkpoint</h3>
+        <p class="mt-3 text-slate-200">If we don’t ship meaningful progress (creative velocity, CAC trend, or funnel uplift) in the first 30 days, you can cancel — no hard feelings.</p>
+      </div>
+      <div class="self-center">
+        <a href="apply.html" class="inline-flex items-center rounded-2xl bg-white text-slate-900 px-6 py-3 font-medium hover:bg-slate-100">Start your audit</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-20 bg-slate-50">
+    <h2 class="text-2xl font-bold text-center fade-in">Frequently Asked Questions</h2>
+    <div class="space-y-0">
+      <div class="faq-item border-t border-slate-200 first:border-t-0 py-6 fade-in">
+        <button class="faq-button w-full flex items-start gap-4 text-left cursor-pointer group transition-all duration-300" aria-expanded="false">
+          <span class="faq-icon flex-shrink-0 text-primary-500 text-xl font-light transition-all duration-300">+</span>
+          <div class="flex-1">
+            <h3 class="text-lg font-bold text-slate-900 group-hover:text-slate-700 transition-colors duration-300">Who is Brand Lift Co best for?</h3>
+            <div class="faq-answer mt-4 text-base text-slate-600 leading-relaxed opacity-0 max-h-0 overflow-hidden transition-all duration-300">
+              DTC brands ($50k–$500k/mo) and local lead‑gen businesses that need performance content + paid media.
+            </div>
+          </div>
+        </button>
+      </div>
+      <div class="faq-item border-t border-slate-200 py-6 fade-in">
+        <button class="faq-button w-full flex items-start gap-4 text-left cursor-pointer group transition-all duration-300" aria-expanded="false">
+          <span class="faq-icon flex-shrink-0 text-primary-500 text-xl font-light transition-all duration-300">+</span>
+          <div class="flex-1">
+            <h3 class="text-lg font-bold text-slate-900 group-hover:text-slate-700 transition-colors duration-300">How fast do you start?</h3>
+            <div class="faq-answer mt-4 text-base text-slate-600 leading-relaxed opacity-0 max-h-0 overflow-hidden transition-all duration-300">
+              Kickoff within 5–7 days. Week 1 ships initial creative tests and funnel quick wins.
+            </div>
+          </div>
+        </button>
+      </div>
+      <div class="faq-item border-t border-slate-200 py-6 fade-in">
+        <button class="faq-button w-full flex items-start gap-4 text-left cursor-pointer group transition-all duration-300" aria-expanded="false">
+          <span class="faq-icon flex-shrink-0 text-primary-500 text-xl font-light transition-all duration-300">+</span>
+          <div class="flex-1">
+            <h3 class="text-lg font-bold text-slate-900 group-hover:text-slate-700 transition-colors duration-300">Do you handle creative production?</h3>
+            <div class="faq-answer mt-4 text-base text-slate-600 leading-relaxed opacity-0 max-h-0 overflow-hidden transition-all duration-300">
+              Yes. We source creators, write briefs, and deliver variations across hooks/offers.
+            </div>
+          </div>
+        </button>
+      </div>
+      <div class="faq-item border-t border-slate-200 py-6 fade-in">
+        <button class="faq-button w-full flex items-start gap-4 text-left cursor-pointer group transition-all duration-300" aria-expanded="false">
+          <span class="faq-icon flex-shrink-0 text-primary-500 text-xl font-light transition-all duration-300">+</span>
+          <div class="flex-1">
+            <h3 class="text-lg font-bold text-slate-900 group-hover:text-slate-700 transition-colors duration-300">How do you report?</h3>
+            <div class="faq-answer mt-4 text-base text-slate-600 leading-relaxed opacity-0 max-h-0 overflow-hidden transition-all duration-300">
+              Weekly loom + dashboard covering CAC, ROAS, revenue, learnings, and next tests.
+            </div>
+          </div>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blue CTA Section -->
+  <section class="relative overflow-hidden w-full">
+    <div class="absolute inset-0 bg-gradient-to-br from-blue-950 via-blue-900 to-blue-800"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.18)_0%,rgba(255,255,255,0)_45%)]"></div>
+    <div class="relative text-center text-white px-6 py-16 sm:px-10 sm:py-20">
+      <h3 class="text-3xl sm:text-4xl font-black tracking-tight">Bring your Brand to Life.</h3>
+      <p class="mt-3 text-2xl sm:text-3xl font-semibold">Turn Views Into Revenue with High-Impact Ad Campaigns.</p>
+      <p class="mt-6 max-w-3xl mx-auto text-slate-100/90 leading-relaxed">
+        Maximize your brand's reach through expert ad management and strategic social media execution.
+        From Meta to TikTok, we craft, launch, and optimize campaigns that turn engagement into conversions.
+        Whether you're building awareness or scaling sales, we help you transform attention into lasting growth.
+      </p>
+      <div class="mt-8 flex items-center justify-center gap-6">
+        <a href="apply.html" class="inline-flex items-center rounded-xl bg-gradient-to-r from-primary-600 to-primary-700 text-white px-6 py-2.5 font-semibold hover:from-primary-700 hover:to-primary-800 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 pulse-glow">Apply Now</a>
+        <a href="#services" class="inline-flex items-center font-medium text-white/90 hover:text-white">Learn more <span class="ml-1">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-200">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 text-sm text-slate-500 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div>© 2025 Brand Lift Co. All rights reserved.</div>
+      <a href="mailto:hello@brandlift.co" class="hover:text-slate-700">hello@brandlift.co</a>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,17 @@
+# Run these commands in your terminal:
+
+# 1. Initialize Netlify (choose "Create & configure a new project")
+netlify init
+
+# After init completes, deploy with:
+netlify deploy --prod
+
+# OR if you want to skip init and deploy directly:
+netlify deploy --prod --dir . --site [your-site-name]
+
+# Alternative: Use the Netlify web interface
+# 1. Zip your project folder
+# 2. Go to https://app.netlify.com
+# 3. Drag and drop the zip file
+
+

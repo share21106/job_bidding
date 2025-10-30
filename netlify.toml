@@ -1,0 +1,10 @@
+[build]
+  command = "echo 'No build needed'"
+  publish = "."
+
+# Using Netlify Forms - no serverless functions needed!
+# Your form in apply.html has the 'netlify' attribute
+# which enables automatic form handling when deployed to Netlify.
+
+# Submissions will appear in: Netlify Dashboard → Forms
+# No environment variables needed!

@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Thank You — Brand Lift Co</title>
+  <link rel="icon" type="image/png" href="assets/logo.png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { 
+            primary: {
+              50: '#eff6ff',
+              100: '#dbeafe', 
+              200: '#bfdbfe',
+              300: '#93c5fd',
+              400: '#60a5fa',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+              800: '#1e40af',
+              900: '#1e3a8a'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+    
+    * {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    }
+    
+    .gradient-text {
+      background: linear-gradient(135deg, #1d4ed8 0%, #3b82f6 50%, #8b5cf6 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      background-size: 200% 200%;
+      animation: gradientShift 3s ease-in-out infinite;
+    }
+    
+    @keyframes gradientShift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+    
+    .floating {
+      animation: floating 6s ease-in-out infinite;
+    }
+    
+    @keyframes floating {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+    
+    .pulse-glow {
+      animation: pulseGlow 2s ease-in-out infinite;
+    }
+    
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 0 20px rgba(37, 99, 235, 0.3); }
+      50% { box-shadow: 0 0 40px rgba(37, 99, 235, 0.6); }
+    }
+    
+    .success-animation {
+      animation: successPulse 0.6s ease-out;
+    }
+    
+    @keyframes successPulse {
+      0% { transform: scale(0.8); opacity: 0; }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); opacity: 1; }
+    }
+  </style>
+</head>
+<body class="antialiased bg-slate-50 text-slate-900">
+  <main class="min-h-screen grid place-items-center p-6 relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-purple-50"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(37,99,235,0.05),transparent_50%)]"></div>
+    
+    <div class="relative max-w-2xl w-full rounded-3xl bg-white/80 backdrop-blur-sm border border-slate-200/60 shadow-2xl p-12 text-center success-animation">
+      <div class="relative mb-8">
+        <div class="absolute inset-0 bg-gradient-to-r from-primary-600 to-purple-600 rounded-full blur-2xl opacity-20"></div>
+        <img src="assets/logo.png" alt="Brand Lift Co logo" class="relative mx-auto h-16 w-16 object-contain floating">
+      </div>
+      
+      <h1 class="text-4xl sm:text-5xl font-black mb-6">
+        Application <span class="gradient-text">received</span> 🎉
+      </h1>
+      
+      <p class="text-xl text-slate-600 mb-8 leading-relaxed">
+        Thanks for applying to Brand Lift Co. A team member will review your info and reach out shortly with your personalized growth audit.
+      </p>
+      
+      <div class="bg-gradient-to-r from-primary-50 to-purple-50 rounded-2xl p-6 mb-8 border border-primary-100">
+        <div class="flex items-center justify-center gap-3 mb-3">
+          <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+          <span class="text-sm font-semibold text-slate-700">What happens next?</span>
+        </div>
+        <div class="text-sm text-slate-600 space-y-1">
+          <div>✓ Review your application (24-48 hours)</div>
+          <div>✓ Prepare your growth audit</div>
+          <div>✓ Schedule a strategy call</div>
+        </div>
+      </div>
+      
+      <a href="index.html" class="group inline-flex items-center rounded-2xl bg-gradient-to-r from-primary-600 to-primary-700 text-white px-8 py-4 font-bold text-lg hover:from-primary-700 hover:to-primary-800 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 pulse-glow">
+        <span>Back to home</span>
+        <svg class="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+        </svg>
+      </a>
+    </div>
+  </main>
+  <footer class="text-center text-xs text-slate-500 pb-6">© 2025 Brand Lift Co</footer>
+</body>
+</html>
