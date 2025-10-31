@@ -7,7 +7,7 @@
 node_modules/
 
 # Netlify
-
+.netlify/
 
 # Logs
 *.log
