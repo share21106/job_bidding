@@ -8,10 +8,7 @@
     "build": "echo 'No build needed for static site'",
     "start": "npm run dev"
   },
-  "dependencies": {},
-  "devDependencies": {},
   "keywords": [],
   "author": "",
   "license": "ISC"
 }
-

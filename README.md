@@ -1,13 +1,12 @@
 # Brand Lift Co
 
-A performance brand scaling website for e-commerce and local businesses, featuring an application form with Airtable integration.
+A performance brand scaling website for e-commerce and local businesses, featuring an application form with Netlify Forms integration.
 
 ## Features
 
 - Modern, responsive landing page
 - Multi-step application form
-- Airtable integration for data storage
-- Netlify Functions for serverless backend
+- Netlify Forms for form submissions
 - Thank you page with confirmation
 
 ## Project Structure
@@ -17,11 +16,8 @@ A performance brand scaling website for e-commerce and local businesses, featuri
 ├── apply.html              # Multi-step application form
 ├── thank-you.html          # Submission confirmation page
 ├── assets/                 # Images and static assets
-├── netlify/
-│   └── functions/          # Serverless functions
-│       └── submit-application.js  # Airtable integration
 ├── package.json            # Dependencies
-└── AIRTABLE_SETUP.md       # Airtable setup guide
+└── netlify.toml            # Netlify configuration
 ```
 
 ## Getting Started
@@ -29,7 +25,6 @@ A performance brand scaling website for e-commerce and local businesses, featuri
 ### Prerequisites
 
 - Netlify account
-- Airtable account
 - Node.js and npm (for local development)
 
 ### Setup
@@ -45,14 +40,8 @@ A performance brand scaling website for e-commerce and local businesses, featuri
    npm install
    ```
 
-3. **Set up Airtable** (see [AIRTABLE_SETUP.md](./AIRTABLE_SETUP.md) for detailed instructions)
-   - Create an Airtable base
-   - Get your Base ID and API key
-   - Set up environment variables in Netlify
-
-4. **Deploy to Netlify**
+3. **Deploy to Netlify**
    - Connect your repository to Netlify
-   - Add environment variables in Netlify dashboard
    - Deploy!
 
 ### Local Development
@@ -67,22 +56,6 @@ netlify dev
 
 The site will be available at `http://localhost:8888`
 
-## Environment Variables
-
-Required environment variables (set in Netlify dashboard):
-
-- `AIRTABLE_BASE_ID` - Your Airtable base ID
-- `AIRTABLE_API_KEY` - Your Airtable API key
-- `AIRTABLE_TABLE_NAME` - Your table name (default: "Applications")
-
-For local development, copy `env.example` to `.env` and fill in your values:
-
-```bash
-cp env.example .env
-```
-
-Then edit `.env` with your Airtable credentials.
-
 ## Application Form Fields
 
 The form collects:
@@ -92,7 +65,7 @@ The form collects:
 - Required Services (checkboxes)
 - Goals (text area)
 
-All submissions are automatically saved to Airtable.
+All submissions are automatically saved via Netlify Forms.
 
 ## Customization
 
@@ -100,8 +73,6 @@ All submissions are automatically saved to Airtable.
 
 1. Edit `apply.html` to add/modify form fields
 2. Update the JavaScript to collect new field values
-3. Update the Netlify function to map fields to Airtable
-4. Add corresponding fields in your Airtable table
 
 ### Styling
 
@@ -118,17 +89,14 @@ This site is designed to deploy on Netlify:
 
 1. Push code to your Git repository
 2. Connect repository to Netlify
-3. Add environment variables
-4. Deploy!
+3. Deploy!
 
 Netlify will automatically handle:
 - Static site hosting
-- Serverless functions
 - Form submissions
+- Email notifications
 
 ## Support
-
-For setup help, see [AIRTABLE_SETUP.md](./AIRTABLE_SETUP.md)
 
 For issues or questions, contact: hello@brandlift.co
 
