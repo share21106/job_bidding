@@ -1,17 +1,59 @@
+functionsDirectory = "D:\\STAR\\Brandliftco\\netlify\\functions"
+functionsDirectoryOrigin = "config"
+headers = []
+redirects = []
+
 [build]
-  command = "echo 'No build needed'"
-  publish = "."
+publish = "D:\\STAR\\Brandliftco"
+publishOrigin = "config"
+commandOrigin = "config"
+command = "echo 'No build needed'"
+functions = "D:\\STAR\\Brandliftco\\netlify\\functions"
 
-# Functions directory for Google Sheets integration
+  [build.environment]
+
+  [build.processing]
+
+    [build.processing.css]
+
+    [build.processing.html]
+
+    [build.processing.images]
+
+    [build.processing.js]
+
+  [build.services]
+
 [functions]
-  directory = "netlify/functions"
 
-# Using Netlify Forms for primary form storage
-# Your form in apply.html has the 'netlify' attribute
-# which enables automatic form handling when deployed to Netlify.
+  [functions.emails]
+  included_files = [
+    "./emails/**"
+  ]
 
-# Submissions will appear in: Netlify Dashboard → Forms
+  [functions."*"]
 
-# Optional: Google Sheets integration
-# Follow GOOGLE_SHEETS_SETUP.md to set up automatic Google Sheets syncing
-# Requires environment variables: GOOGLE_SERVICE_ACCOUNT_EMAIL, GOOGLE_PRIVATE_KEY, GOOGLE_SPREADSHEET_ID
+[[plugins]]
+origin = "ui"
+package = "@netlify/plugin-lighthouse"
+
+  [plugins.inputs]
+
+[[plugins]]
+origin = "ui"
+package = "netlify-plugin-visual-diff"
+
+  [plugins.inputs]
+
+[[plugins]]
+origin = "ui"
+package = "netlify-plugin-cypress"
+
+  [plugins.inputs]
+
+[[plugins]]
+origin = "ui"
+package = "@netlify/plugin-emails"
+pinned_version = "1"
+
+  [plugins.inputs]

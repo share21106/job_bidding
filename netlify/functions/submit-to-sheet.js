@@ -53,15 +53,7 @@ exports.handler = async (event) => {
     Object.keys(formData).forEach(key => {
       // Capitalize first letter
       const capitalizedKey = key.charAt(0).toUpperCase() + key.slice(1);
-      let value = formData[key];
-      
-      // Prevent Google Sheets from interpreting values as formulas
-      // If value starts with =, +, -, or @, prefix with single quote
-      if (value && typeof value === 'string' && /^[=+\-@]/.test(value)) {
-        value = "'" + value;
-      }
-      
-      cleanedData[capitalizedKey] = value;
+      cleanedData[capitalizedKey] = formData[key];
     });
 
     // Add timestamp
