@@ -1,825 +1,1052 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Apply — Brand Lift Co</title>
-  <link rel="icon" type="image/png" href="assets/favicon_blue.png" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            primary: {
-              50: '#eff6ff',
-              100: '#dbeafe',
-              200: '#bfdbfe',
-              300: '#93c5fd',
-              400: '#60a5fa',
-              500: '#3b82f6',
-              600: '#2563eb',
-              700: '#1d4ed8',
-              800: '#1e40af',
-              900: '#1e3a8a'
-            }
-          }
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Apply — Brand Lift Co</title>
+    <link rel="icon" type="image/png" href="assets/favicon_blue.png" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: {
+                50: "#eff6ff",
+                100: "#dbeafe",
+                200: "#bfdbfe",
+                300: "#93c5fd",
+                400: "#60a5fa",
+                500: "#3b82f6",
+                600: "#2563eb",
+                700: "#1d4ed8",
+                800: "#1e40af",
+                900: "#1e3a8a",
+              },
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap");
+
+      * {
+        font-family: "Inter", system-ui, -apple-system, sans-serif;
+      }
+
+      .step {
+        display: none;
+        animation: fadeInUp 0.5s ease-out;
+      }
+      .step.active {
+        display: block;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
         }
       }
-    }
-  </script>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
-    
-    * {
-      font-family: 'Inter', system-ui, -apple-system, sans-serif;
-    }
-    
-    .step { 
-      display:none; 
-      animation: fadeInUp 0.5s ease-out;
-    }
-    .step.active { 
-      display:block; 
-    }
-    
-    @keyframes fadeInUp {
-      from {
+
+      .gradient-text {
+        background: linear-gradient(
+          135deg,
+          #1d4ed8 0%,
+          #3b82f6 50%,
+          #8b5cf6 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        background-size: 200% 200%;
+        animation: gradientShift 3s ease-in-out infinite;
+      }
+
+      @keyframes gradientShift {
+        0%,
+        100% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+      }
+
+      .pulse-glow {
+        animation: pulseGlow 2s ease-in-out infinite;
+      }
+
+      @keyframes pulseGlow {
+        0%,
+        100% {
+          box-shadow: 0 0 20px rgba(37, 99, 235, 0.3);
+        }
+        50% {
+          box-shadow: 0 0 40px rgba(37, 99, 235, 0.6);
+        }
+      }
+
+      .form-input {
+        transition: all 0.3s ease;
+      }
+
+      .form-input:focus {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(37, 99, 235, 0.15);
+      }
+
+      .progress-bar {
+        background: linear-gradient(90deg, #3b82f6, #1d4ed8, #8b5cf6);
+        background-size: 200% 100%;
+        animation: progressShimmer 2s ease-in-out infinite;
+      }
+
+      @keyframes progressShimmer {
+        0% {
+          background-position: -200% 0;
+        }
+        100% {
+          background-position: 200% 0;
+        }
+      }
+
+      /* Custom select styling */
+      select.form-input {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+        background-position: right 12px center;
+        background-repeat: no-repeat;
+        background-size: 16px 12px;
+        padding-right: 40px;
+      }
+
+      select.form-input:focus {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%232563eb' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+      }
+
+      /* Select arrow for underlined style */
+      select.underlined-select {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+        background-position: right 0 center;
+        background-repeat: no-repeat;
+        background-size: 16px 12px;
+        padding-right: 24px;
+      }
+
+      select.underlined-select:focus {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%233b82f6' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+      }
+
+      /* Remove default focus outlines and black borders */
+      input:focus,
+      select:focus,
+      textarea:focus {
+        outline: none !important;
+        border-color: #3b82f6 !important;
+      }
+
+      /* Ensure custom focus styling takes precedence */
+      .form-input:focus {
+        outline: none !important;
+        border-color: #3b82f6 !important;
+        box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2) !important;
+      }
+
+      /* New form styling - underline inputs */
+      .question-label {
+        font-size: 18px;
+        font-weight: 700;
+        color: #1e293b;
+        margin-bottom: 8px;
+      }
+
+      .helper-text {
+        font-size: 14px;
+        font-weight: 400;
+        color: #64748b;
+        margin-bottom: 12px;
+      }
+
+      .underlined-input {
+        border: none;
+        border-bottom: 1px solid #cbd5e1;
+        border-radius: 0;
+        padding: 8px 0;
+        background: transparent;
+        font-size: 16px;
+        transition: border-color 0.3s ease;
+      }
+
+      .underlined-input:focus {
+        outline: none;
+        border-bottom: 1px solid #3b82f6;
+        box-shadow: none;
+      }
+
+      .underlined-input::placeholder {
+        color: #94a3b8;
+        opacity: 0.8;
+      }
+
+      textarea.underlined-input {
+        min-height: 80px;
+        border-bottom: 1px solid #cbd5e1;
+      }
+
+      textarea.underlined-input:focus {
+        border-bottom: 1px solid #3b82f6;
+      }
+
+      .underlined-select {
+        border: none;
+        border-bottom: 1px solid #cbd5e1;
+        border-radius: 0;
+        padding: 8px 0;
+        background: transparent;
+        font-size: 16px;
+        transition: border-color 0.3s ease;
+      }
+
+      .underlined-select:focus {
+        outline: none;
+        border-bottom: 1px solid #3b82f6;
+        box-shadow: none;
+      }
+
+      .step-indicator {
+        color: #1e293b;
+        font-weight: 700;
+      }
+
+      .red-button {
+        background-color: #ef4444;
+        color: white;
+        font-weight: 700;
+        border-radius: 4px;
+        padding: 10px 24px;
+        border: none;
+        transition: background-color 0.3s ease;
+      }
+
+      .red-button:hover {
+        background-color: #dc2626;
+      }
+
+      /* Radio button card styling */
+      .radio-card {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 16px;
+        background-color: #f1f5f9;
+        border: 2px solid transparent;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-bottom: 12px;
+      }
+
+      .radio-card:hover {
+        background-color: #e2e8f0;
+        border-color: #cbd5e1;
+      }
+
+      .radio-card input[type="radio"] {
+        display: none;
+      }
+
+      .radio-card input[type="radio"]:checked + .radio-letter {
+        background-color: #3b82f6;
+        color: white;
+      }
+
+      .radio-card input[type="radio"]:checked ~ .radio-label {
+        color: #1e293b;
+        font-weight: 600;
+      }
+
+      .radio-card:has(input[type="radio"]:checked),
+      .radio-card.active {
+        background-color: #e0e7ff;
+        border-color: #3b82f6;
+      }
+
+      /* Checkmark for selected radio cards */
+      .radio-checkmark {
+        margin-left: auto;
+        color: #3b82f6;
+        font-size: 18px;
+        font-weight: bold;
         opacity: 0;
-        transform: translateY(20px);
+        transition: opacity 0.3s ease;
+        flex-shrink: 0;
       }
-      to {
+
+      .radio-card input[type="radio"]:checked ~ .radio-checkmark,
+      .radio-card.active .radio-checkmark {
         opacity: 1;
-        transform: translateY(0);
       }
-    }
-    
-    .gradient-text {
-      background: linear-gradient(135deg, #1d4ed8 0%, #3b82f6 50%, #8b5cf6 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      background-size: 200% 200%;
-      animation: gradientShift 3s ease-in-out infinite;
-    }
-    
-    @keyframes gradientShift {
-      0%, 100% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-    }
-    
-    .pulse-glow {
-      animation: pulseGlow 2s ease-in-out infinite;
-    }
-    
-    @keyframes pulseGlow {
-      0%, 100% { box-shadow: 0 0 20px rgba(37, 99, 235, 0.3); }
-      50% { box-shadow: 0 0 40px rgba(37, 99, 235, 0.6); }
-    }
-    
-    .form-input {
-      transition: all 0.3s ease;
-    }
-    
-    .form-input:focus {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 25px rgba(37, 99, 235, 0.15);
-    }
-    
-    .progress-bar {
-      background: linear-gradient(90deg, #3b82f6, #1d4ed8, #8b5cf6);
-      background-size: 200% 100%;
-      animation: progressShimmer 2s ease-in-out infinite;
-    }
-    
-    @keyframes progressShimmer {
-      0% { background-position: -200% 0; }
-      100% { background-position: 200% 0; }
-    }
-    
-    /* Custom select styling */
-    select.form-input {
-      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
-      background-position: right 12px center;
-      background-repeat: no-repeat;
-      background-size: 16px 12px;
-      padding-right: 40px;
-    }
-    
-    select.form-input:focus {
-      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%232563eb' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
-    }
-    
-    /* Select arrow for underlined style */
-    select.underlined-select {
-      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
-      background-position: right 0 center;
-      background-repeat: no-repeat;
-      background-size: 16px 12px;
-      padding-right: 24px;
-    }
-    
-    select.underlined-select:focus {
-      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%233b82f6' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
-    }
-    
-    /* Remove default focus outlines and black borders */
-    input:focus,
-    select:focus,
-    textarea:focus {
-      outline: none !important;
-      border-color: #3b82f6 !important;
-    }
-    
-    /* Ensure custom focus styling takes precedence */
-    .form-input:focus {
-      outline: none !important;
-      border-color: #3b82f6 !important;
-      box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2) !important;
-    }
-    
-    /* New form styling - underline inputs */
-    .question-label {
-      font-size: 18px;
-      font-weight: 700;
-      color: #1e293b;
-      margin-bottom: 8px;
-    }
-    
-    .helper-text {
-      font-size: 14px;
-      font-weight: 400;
-      color: #64748b;
-      margin-bottom: 12px;
-    }
-    
-    .underlined-input {
-      border: none;
-      border-bottom: 1px solid #cbd5e1;
-      border-radius: 0;
-      padding: 8px 0;
-      background: transparent;
-      font-size: 16px;
-      transition: border-color 0.3s ease;
-    }
-    
-    .underlined-input:focus {
-      outline: none;
-      border-bottom: 1px solid #3b82f6;
-      box-shadow: none;
-    }
-    
-    .underlined-input::placeholder {
-      color: #94a3b8;
-      opacity: 0.8;
-    }
-    
-    textarea.underlined-input {
-      min-height: 80px;
-      border-bottom: 1px solid #cbd5e1;
-    }
-    
-    textarea.underlined-input:focus {
-      border-bottom: 1px solid #3b82f6;
-    }
-    
-    .underlined-select {
-      border: none;
-      border-bottom: 1px solid #cbd5e1;
-      border-radius: 0;
-      padding: 8px 0;
-      background: transparent;
-      font-size: 16px;
-      transition: border-color 0.3s ease;
-    }
-    
-    .underlined-select:focus {
-      outline: none;
-      border-bottom: 1px solid #3b82f6;
-      box-shadow: none;
-    }
-    
-    .step-indicator {
-      color: #1e293b;
-      font-weight: 700;
-    }
-    
-    .red-button {
-      background-color: #ef4444;
-      color: white;
-      font-weight: 700;
-      border-radius: 4px;
-      padding: 10px 24px;
-      border: none;
-      transition: background-color 0.3s ease;
-    }
-    
-    .red-button:hover {
-      background-color: #dc2626;
-    }
-    
-    /* Radio button card styling */
-    .radio-card {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 12px 16px;
-      background-color: #f1f5f9;
-      border: 2px solid transparent;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      margin-bottom: 12px;
-    }
-    
-    .radio-card:hover {
-      background-color: #e2e8f0;
-      border-color: #cbd5e1;
-    }
-    
-    .radio-card input[type="radio"] {
-      display: none;
-    }
-    
-    .radio-card input[type="radio"]:checked + .radio-letter {
-      background-color: #3b82f6;
-      color: white;
-    }
-    
-    .radio-card input[type="radio"]:checked ~ .radio-label {
-      color: #1e293b;
-      font-weight: 600;
-    }
-    
-    .radio-card:has(input[type="radio"]:checked),
-    .radio-card.active {
-      background-color: #e0e7ff;
-      border-color: #3b82f6;
-    }
-    
-    /* Checkmark for selected radio cards */
-    .radio-checkmark {
-      margin-left: auto;
-      color: #3b82f6;
-      font-size: 18px;
-      font-weight: bold;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-      flex-shrink: 0;
-    }
-    
-    .radio-card input[type="radio"]:checked ~ .radio-checkmark,
-    .radio-card.active .radio-checkmark {
-      opacity: 1;
-    }
-    
-    .radio-letter {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 32px;
-      height: 32px;
-      background-color: #cbd5e1;
-      color: #475569;
-      font-weight: 700;
-      font-size: 14px;
-      border-radius: 4px;
-      transition: all 0.3s ease;
-      flex-shrink: 0;
-    }
-    
-    .radio-label {
-      color: #475569;
-      font-size: 16px;
-      flex: 1;
-      transition: all 0.3s ease;
-    }
-    
-    /* Checkbox card styling (multi-select, same style as radio cards) */
-    .checkbox-card {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 12px 16px;
-      background-color: #f1f5f9;
-      border: 2px solid transparent;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      margin-bottom: 12px;
-    }
-    
-    .checkbox-card:hover {
-      background-color: #e2e8f0;
-      border-color: #cbd5e1;
-    }
-    
-    .checkbox-card input[type="checkbox"] {
-      display: none;
-    }
-    
-    .checkbox-card input[type="checkbox"]:checked + .radio-letter {
-      background-color: #3b82f6;
-      color: white;
-    }
-    
-    .checkbox-card input[type="checkbox"]:checked ~ .radio-label {
-      color: #1e293b;
-      font-weight: 600;
-    }
-    
-    .checkbox-card:has(input[type="checkbox"]:checked),
-    .checkbox-card.active {
-      background-color: #e0e7ff;
-      border-color: #3b82f6;
-    }
-    
-    .checkbox-card input[type="checkbox"]:checked ~ .radio-checkmark,
-    .checkbox-card.active .radio-checkmark {
-      opacity: 1;
-    }
-    
-    /* Dark themed radio cards (for marketing budget) */
-    .radio-card.dark {
-      background-color: #334155;
-      border: 2px solid transparent;
-    }
-    
-    .radio-card.dark:hover {
-      background-color: #475569;
-      border-color: #64748b;
-    }
-    
-    .radio-card.dark:has(input[type="radio"]:checked),
-    .radio-card.dark.active {
-      background-color: #475569;
-      border-color: #94a3b8;
-    }
-    
-    .radio-card.dark .radio-letter {
-      background-color: #1e293b;
-      color: white;
-    }
-    
-    .radio-card.dark input[type="radio"]:checked + .radio-letter {
-      background-color: #1e293b;
-      color: white;
-    }
-    
-    .radio-card.dark .radio-label {
-      color: white;
-    }
-    
-    .radio-card.dark input[type="radio"]:checked ~ .radio-label {
-      color: white;
-      font-weight: 600;
-    }
-  </style>
-</head>
-<body class="antialiased bg-white text-slate-900">
-  <header class="sticky top-0 z-40 bg-white border-b border-slate-200">
-    <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-      <a href="index.html" class="flex items-center gap-3 group">
-        <div class="relative">
-          <img src="assets/logo_black.png" class="h-9 w-9 object-contain group-hover:hidden transition-transform duration-300" alt="Brand Lift Co logo">
-          <img src="assets/favicon_blue.png" class="h-9 w-9 object-contain hidden group-hover:block group-hover:scale-110 transition-transform duration-300" alt="Brand Lift Co logo">
+
+      .radio-letter {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        background-color: #cbd5e1;
+        color: #475569;
+        font-weight: 700;
+        font-size: 14px;
+        border-radius: 4px;
+        transition: all 0.3s ease;
+        flex-shrink: 0;
+      }
+
+      .radio-label {
+        color: #475569;
+        font-size: 16px;
+        flex: 1;
+        transition: all 0.3s ease;
+      }
+
+      /* Checkbox card styling (multi-select, same style as radio cards) */
+      .checkbox-card {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 16px;
+        background-color: #f1f5f9;
+        border: 2px solid transparent;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-bottom: 12px;
+      }
+
+      .checkbox-card:hover {
+        background-color: #e2e8f0;
+        border-color: #cbd5e1;
+      }
+
+      .checkbox-card input[type="checkbox"] {
+        display: none;
+      }
+
+      .checkbox-card input[type="checkbox"]:checked + .radio-letter {
+        background-color: #3b82f6;
+        color: white;
+      }
+
+      .checkbox-card input[type="checkbox"]:checked ~ .radio-label {
+        color: #1e293b;
+        font-weight: 600;
+      }
+
+      .checkbox-card:has(input[type="checkbox"]:checked),
+      .checkbox-card.active {
+        background-color: #e0e7ff;
+        border-color: #3b82f6;
+      }
+
+      .checkbox-card input[type="checkbox"]:checked ~ .radio-checkmark,
+      .checkbox-card.active .radio-checkmark {
+        opacity: 1;
+      }
+
+      /* Dark themed radio cards (for marketing budget) */
+      .radio-card.dark {
+        background-color: #334155;
+        border: 2px solid transparent;
+      }
+
+      .radio-card.dark:hover {
+        background-color: #475569;
+        border-color: #64748b;
+      }
+
+      .radio-card.dark:has(input[type="radio"]:checked),
+      .radio-card.dark.active {
+        background-color: #475569;
+        border-color: #94a3b8;
+      }
+
+      .radio-card.dark .radio-letter {
+        background-color: #1e293b;
+        color: white;
+      }
+
+      .radio-card.dark input[type="radio"]:checked + .radio-letter {
+        background-color: #1e293b;
+        color: white;
+      }
+
+      .radio-card.dark .radio-label {
+        color: white;
+      }
+
+      .radio-card.dark input[type="radio"]:checked ~ .radio-label {
+        color: white;
+        font-weight: 600;
+      }
+    </style>
+  </head>
+  <body class="antialiased bg-white text-slate-900">
+    <header class="sticky top-0 z-40 bg-white border-b border-slate-200">
+      <div
+        class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between"
+      >
+        <a href="index.html" class="flex items-center gap-3 group">
+          <div class="relative">
+            <img
+              src="assets/logo_black.png"
+              class="h-9 w-9 object-contain group-hover:hidden transition-transform duration-300"
+              alt="Brand Lift Co logo"
+            />
+            <img
+              src="assets/favicon_blue.png"
+              class="h-9 w-9 object-contain hidden group-hover:block group-hover:scale-110 transition-transform duration-300"
+              alt="Brand Lift Co logo"
+            />
+          </div>
+          <div
+            class="font-semibold tracking-tight group-hover:text-primary-700 transition-colors duration-300"
+          >
+            Brand Lift Co
+          </div>
+        </a>
+        <div class="text-sm text-slate-500" id="progressLabel">
+          Step 1 of 10
         </div>
-        <div class="font-semibold tracking-tight group-hover:text-primary-700 transition-colors duration-300">Brand Lift Co</div>
-      </a>
-      <div class="text-sm text-slate-500" id="progressLabel">Step 1 of 10</div>
-    </div>
-  </header>
+      </div>
+    </header>
 
-  <main class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-12">
-    <div class="text-center mb-8">
-      <h1 class="text-4xl sm:text-5xl font-black mb-4">
-        Apply for <span class="gradient-text">Growth Audit</span>
-      </h1>
-      <p class="text-lg text-slate-600">Get a free analysis of your brand's growth potential</p>
-    </div>
+    <main class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-12">
+      <div class="text-center mb-8">
+        <h1 class="text-4xl sm:text-5xl font-black mb-4">
+          Apply for <span class="gradient-text">Growth Audit</span>
+        </h1>
+        <p class="text-lg text-slate-600">
+          Get a free analysis of your brand's growth potential
+        </p>
+      </div>
 
-    <div class="w-full bg-slate-200 h-3 rounded-full overflow-hidden shadow-inner">
-      <div id="progressBar" class="h-3 progress-bar w-[10%] transition-all duration-500 rounded-full"></div>
-    </div>
+      <div
+        class="w-full bg-slate-200 h-3 rounded-full overflow-hidden shadow-inner"
+      >
+        <div
+          id="progressBar"
+          class="h-3 progress-bar w-[10%] transition-all duration-500 rounded-full"
+        ></div>
+      </div>
 
-    <form id="wizard" class="mt-8 space-y-6" name="application" netlify netlify-honeypot="bot-field" data-netlify="true" novalidate>
-      <input type="hidden" name="subject" value="Application Submission" />
-      <input type="hidden" name="form-name" value="application" />
-      <p style="display: none;">
-        <label>Don't fill this out: <input name="bot-field" /></label>
-      </p>
-      <!-- Step 1: Name -->
-      <!-- <section class="step active">
+      <form
+        id="wizard"
+        class="mt-8 space-y-6"
+        name="application"
+        netlify
+        netlify-honeypot="bot-field"
+        data-netlify="true"
+        novalidate
+      >
+        <input type="hidden" name="subject" value="Application Submission" />
+        <input type="hidden" name="form-name" value="application" />
+        <p style="display: none">
+          <label>Don't fill this out: <input name="bot-field" /></label>
+        </p>
+        <!-- Step 1: Name -->
+        <!-- <section class="step active">
         <label class="block text-sm font-medium">Full name</label>
         <input name="name" required type="text" class="form-input mt-2 w-full rounded-xl border border-slate-300 px-4 py-3 focus:border-primary-500 focus:ring-2 focus:ring-primary-200" placeholder="Jane Doe">
       </section> -->
 
-      <!-- Step 2: Email -->
-      <section class="step">
-        <label class="question-label"><span class="step-indicator" data-step="1">1→</span>Insert your Email <span class="text-red-500">*</span></label>
-        <p class="helper-text">(please answer with your email address)</p>
-        <input name="email" required type="email" class="underlined-input w-full" placeholder="Type your answer here...">
-      </section>
+        <!-- Step 2: Email -->
+        <section class="step">
+          <label class="question-label"
+            ><span class="step-indicator" data-step="1">1→</span>Insert your
+            Email <span class="text-red-500">*</span></label
+          >
+          <p class="helper-text">(please answer with your email address)</p>
+          <input
+            name="email"
+            required
+            type="email"
+            class="underlined-input w-full"
+            placeholder="Type your answer here..."
+          />
+        </section>
 
-      <!-- Step 3: Phone -->
-      <section class="step">
-        <label class="question-label"><span class="step-indicator" data-step="2">2→</span> Insert your Phone number <span class="text-red-500">*</span></label>
-        <p class="helper-text">(please answer with your phone number)</p>
-        <input name="phone" required type="tel" class="underlined-input w-full" placeholder="Type your answer here...">
-      </section>
+        <!-- Step 3: Phone -->
+        <section class="step">
+          <label class="question-label"
+            ><span class="step-indicator" data-step="2">2→</span> Insert your
+            Phone number <span class="text-red-500">*</span></label
+          >
+          <p class="helper-text">(please answer with your phone number)</p>
+          <input
+            name="phone"
+            required
+            type="tel"
+            class="underlined-input w-full"
+            placeholder="Type your answer here..."
+          />
+        </section>
 
-      <!-- Step 4: Instagram -->
-      <section class="step">
-        <label class="question-label"><span class="step-indicator" data-step="3">3→</span> Insert your brand's Instagram URL <span class="text-red-500">*</span></label>
-        <p class="helper-text">(please answer with the instagram URL)</p>
-        <input name="instagram" required type="text" class="underlined-input w-full" placeholder="Type your answer here...">
-      </section>
+        <!-- Step 4: Instagram -->
+        <section class="step">
+          <label class="question-label"
+            ><span class="step-indicator" data-step="3">3→</span> Insert your
+            brand's Instagram URL <span class="text-red-500">*</span></label
+          >
+          <p class="helper-text">(please answer with the instagram URL)</p>
+          <input
+            name="instagram"
+            required
+            type="text"
+            class="underlined-input w-full"
+            placeholder="Type your answer here..."
+          />
+        </section>
 
-      <!-- Step 5: TikTok -->
-      <section class="step">
-        <label class="question-label"><span class="step-indicator" data-step="4">4→</span> Insert your brand's TikTok URL <span class="text-red-500">*</span></label>
-        <p class="helper-text">(please answer with the tiktok URL)</p>
-        <input name="tiktok" required type="text" class="underlined-input w-full" placeholder="Type your answer here...">
-      </section>
+        <!-- Step 5: TikTok -->
+        <section class="step">
+          <label class="question-label"
+            ><span class="step-indicator" data-step="4">4→</span> Insert your
+            brand's TikTok URL <span class="text-red-500">*</span></label
+          >
+          <p class="helper-text">(please answer with the tiktok URL)</p>
+          <input
+            name="tiktok"
+            required
+            type="text"
+            class="underlined-input w-full"
+            placeholder="Type your answer here..."
+          />
+        </section>
 
-      <!-- Step 6: Website -->
-      <section class="step">
-        <label class="question-label"><span class="step-indicator" data-step="5">5→</span> Website</label>
-        <p class="helper-text">(please answer with your website URL if any)</p>
-        <input name="website" type="url" class="underlined-input w-full" placeholder="Type your answer here...">
-      </section>
+        <!-- Step 6: Website -->
+        <section class="step">
+          <label class="question-label"
+            ><span class="step-indicator" data-step="5">5→</span> Website</label
+          >
+          <p class="helper-text">
+            (please answer with your website URL if any)
+          </p>
+          <input
+            name="website"
+            type="url"
+            class="underlined-input w-full"
+            placeholder="Type your answer here..."
+          />
+        </section>
 
-      <!-- Step 7: Monthly revenue -->
-      <section class="step">
-        <label class="question-label"><span class="step-indicator" data-step="6">6→</span> What is your brand's monthly Revenue? <span class="text-red-500">*</span></label>
-        <p class="helper-text">(please select one option)</p>
-        <div class="mt-4">
-          <label class="radio-card">
-            <input type="radio" name="revenue" value="Brand hasn't launched yet" required>
-            <span class="radio-letter">A</span>
-            <span class="radio-label">Brand hasn't launched yet</span>
-          </label>
-          <label class="radio-card">
-            <input type="radio" name="revenue" value="$0 - $5K" required>
-            <span class="radio-letter">B</span>
-            <span class="radio-label">$0 - $5K</span>
-          </label>
-          <label class="radio-card">
-            <input type="radio" name="revenue" value="$5k - $10k" required>
-            <span class="radio-letter">C</span>
-            <span class="radio-label">$5k - $10k</span>
-          </label>
-          <label class="radio-card">
-            <input type="radio" name="revenue" value="$10k - $30k" required>
-            <span class="radio-letter">D</span>
-            <span class="radio-label">$10k - $30k</span>
-          </label>
-          <label class="radio-card">
-            <input type="radio" name="revenue" value="$30k+" required>
-            <span class="radio-letter">E</span>
-            <span class="radio-label">+$30k</span>
-          </label>
+        <!-- Step 7: Monthly revenue -->
+        <section class="step">
+          <label class="question-label"
+            ><span class="step-indicator" data-step="6">6→</span> What is your
+            brand's monthly Revenue? <span class="text-red-500">*</span></label
+          >
+          <p class="helper-text">(please select one option)</p>
+          <div class="mt-4">
+            <label class="radio-card">
+              <input
+                type="radio"
+                name="revenue"
+                value="Brand hasn't launched yet"
+                required
+              />
+              <span class="radio-letter">A</span>
+              <span class="radio-label">Brand hasn't launched yet</span>
+            </label>
+            <label class="radio-card">
+              <input type="radio" name="revenue" value="$0 - $5K" required />
+              <span class="radio-letter">B</span>
+              <span class="radio-label">$0 - $5K</span>
+            </label>
+            <label class="radio-card">
+              <input type="radio" name="revenue" value="$5k - $10k" required />
+              <span class="radio-letter">C</span>
+              <span class="radio-label">$5k - $10k</span>
+            </label>
+            <label class="radio-card">
+              <input type="radio" name="revenue" value="$10k - $30k" required />
+              <span class="radio-letter">D</span>
+              <span class="radio-label">$10k - $30k</span>
+            </label>
+            <label class="radio-card">
+              <input type="radio" name="revenue" value="$30k+" required />
+              <span class="radio-letter">E</span>
+              <span class="radio-label">+$30k</span>
+            </label>
+          </div>
+        </section>
+
+        <!-- Step 8: Monthly budget -->
+        <section class="step">
+          <label class="question-label"
+            ><span class="step-indicator" data-step="7">7→</span> What is your
+            Marketing budget? <span class="text-red-500">*</span></label
+          >
+          <p class="helper-text">(please select one option)</p>
+          <div class="mt-4">
+            <label class="radio-card">
+              <input type="radio" name="budget" value="$0" required />
+              <span class="radio-letter">A</span>
+              <span class="radio-label">$0</span>
+            </label>
+            <label class="radio-card">
+              <input
+                type="radio"
+                name="budget"
+                value="$1,000 - $2,000"
+                required
+              />
+              <span class="radio-letter">B</span>
+              <span class="radio-label">$1,000 - $2,000</span>
+            </label>
+            <label class="radio-card">
+              <input
+                type="radio"
+                name="budget"
+                value="$2,000 - $3,000"
+                required
+              />
+              <span class="radio-letter">C</span>
+              <span class="radio-label">$2,000 - $3,000</span>
+            </label>
+            <label class="radio-card">
+              <input
+                type="radio"
+                name="budget"
+                value="$3,000 - $4,000"
+                required
+              />
+              <span class="radio-letter">D</span>
+              <span class="radio-label">$3,000 - $4,000</span>
+            </label>
+            <label class="radio-card">
+              <input type="radio" name="budget" value="$4,000 + UP" required />
+              <span class="radio-letter">E</span>
+              <span class="radio-label">$4,000 + UP</span>
+            </label>
+          </div>
+        </section>
+
+        <!-- Step 9: Services -->
+        <section class="step">
+          <label class="question-label"
+            ><span class="step-indicator" data-step="8">8→</span> What do you
+            need help with? <span class="text-red-500">*</span></label
+          >
+          <p class="helper-text">(please select at least one service)</p>
+          <div class="mt-4">
+            <label class="checkbox-card">
+              <input
+                type="checkbox"
+                name="services"
+                value="Paid Ads"
+                required
+              />
+              <span class="radio-letter">A</span>
+              <span class="radio-label">Paid Ads</span>
+              <span class="radio-checkmark">✓</span>
+            </label>
+            <label class="checkbox-card">
+              <input
+                type="checkbox"
+                name="services"
+                value="UGC / Creators"
+                required
+              />
+              <span class="radio-letter">B</span>
+              <span class="radio-label">UGC / Creators</span>
+              <span class="radio-checkmark">✓</span>
+            </label>
+            <label class="checkbox-card">
+              <input
+                type="checkbox"
+                name="services"
+                value="Content System"
+                required
+              />
+              <span class="radio-letter">C</span>
+              <span class="radio-label">Content System</span>
+              <span class="radio-checkmark">✓</span>
+            </label>
+            <label class="checkbox-card">
+              <input
+                type="checkbox"
+                name="services"
+                value="CRO / Funnels"
+                required
+              />
+              <span class="radio-letter">D</span>
+              <span class="radio-label">CRO / Funnels</span>
+              <span class="radio-checkmark">✓</span>
+            </label>
+          </div>
+        </section>
+
+        <!-- Step 10: Goals -->
+        <section class="step">
+          <label class="question-label"
+            ><span class="step-indicator" data-step="9">9→</span> Goals (next 90
+            days) <span class="text-red-500">*</span></label
+          >
+          <p class="helper-text">
+            (please describe your goals for the next 90 days)
+          </p>
+          <textarea
+            name="goals"
+            required
+            rows="4"
+            class="underlined-input w-full resize-none"
+            placeholder="Type your answer here..."
+          ></textarea>
+          <div class="mt-6 text-sm text-slate-600">
+            <label class="inline-flex items-start gap-2"
+              ><input
+                type="checkbox"
+                required
+                name="consent"
+                class="mt-1 w-4 h-4"
+              />
+              I agree to receive emails about my application and growth
+              audit.</label
+            >
+          </div>
+        </section>
+
+        <!-- Step 11: How did you hear about us -->
+        <section class="step">
+          <label class="question-label"
+            ><span class="step-indicator" data-step="10">10→</span> How did you
+            hear about us? <span class="text-red-500">*</span></label
+          >
+          <p class="helper-text">(please select one option)</p>
+          <div class="mt-4">
+            <label class="radio-card">
+              <input type="radio" name="hear-about" value="Youtube" required />
+              <span class="radio-letter">A</span>
+              <span class="radio-label">Youtube</span>
+              <span class="radio-checkmark">✓</span>
+            </label>
+            <label class="radio-card">
+              <input
+                type="radio"
+                name="hear-about"
+                value="Instagram"
+                required
+              />
+              <span class="radio-letter">B</span>
+              <span class="radio-label">Instagram</span>
+              <span class="radio-checkmark">✓</span>
+            </label>
+            <label class="radio-card">
+              <input type="radio" name="hear-about" value="Tiktok" required />
+              <span class="radio-letter">C</span>
+              <span class="radio-label">Tiktok</span>
+              <span class="radio-checkmark">✓</span>
+            </label>
+            <label class="radio-card">
+              <input
+                type="radio"
+                name="hear-about"
+                value="Email & SMS"
+                required
+              />
+              <span class="radio-letter">D</span>
+              <span class="radio-label">Email & SMS</span>
+              <span class="radio-checkmark">✓</span>
+            </label>
+            <label class="radio-card">
+              <input
+                type="radio"
+                name="hear-about"
+                value="Word Of Mouth"
+                required
+              />
+              <span class="radio-letter">E</span>
+              <span class="radio-label">Word Of Mouth</span>
+              <span class="radio-checkmark">✓</span>
+            </label>
+            <label class="radio-card">
+              <input type="radio" name="hear-about" value="Other" required />
+              <span class="radio-letter">F</span>
+              <span class="radio-label">Other</span>
+              <span class="radio-checkmark">✓</span>
+            </label>
+          </div>
+        </section>
+
+        <!-- Nav buttons -->
+        <p id="errorMsg" class="text-sm font-medium text-red-600 mb-4"></p>
+        <div class="flex items-center justify-between pt-4">
+          <button
+            type="button"
+            id="backBtn"
+            class="px-4 py-2 text-slate-700 disabled:opacity-40 border-none bg-transparent hover:underline"
+            disabled
+          >
+            Back
+          </button>
+          <div class="flex items-center gap-3">
+            <span class="text-xs text-slate-500 hidden sm:inline"
+              >press Enter ↵</span
+            >
+            <button type="button" id="nextBtn" class="red-button">OK</button>
+            <button type="submit" id="submitBtn" class="hidden red-button">
+              OK
+            </button>
+          </div>
         </div>
-      </section>
+      </form>
+    </main>
 
-      <!-- Step 8: Monthly budget -->
-      <section class="step">
-        <label class="question-label"><span class="step-indicator" data-step="7">7→</span> What is your Marketing budget? <span class="text-red-500">*</span></label>
-        <p class="helper-text">(please select one option)</p>
-        <div class="mt-4">
-          <label class="radio-card">
-            <input type="radio" name="budget" value="$0" required>
-            <span class="radio-letter">A</span>
-            <span class="radio-label">$0</span>
-          </label>
-          <label class="radio-card">
-            <input type="radio" name="budget" value="$1,000 - $2,000" required>
-            <span class="radio-letter">B</span>
-            <span class="radio-label">$1,000 - $2,000</span>
-          </label>
-          <label class="radio-card">
-            <input type="radio" name="budget" value="$2,000 - $3,000" required>
-            <span class="radio-letter">C</span>
-            <span class="radio-label">$2,000 - $3,000</span>
-          </label>
-          <label class="radio-card">
-            <input type="radio" name="budget" value="$3,000 - $4,000" required>
-            <span class="radio-letter">D</span>
-            <span class="radio-label">$3,000 - $4,000</span>
-          </label>
-          <label class="radio-card">
-            <input type="radio" name="budget" value="$4,000 + UP" required>
-            <span class="radio-letter">E</span>
-            <span class="radio-label">$4,000 + UP</span>
-          </label>
-        </div>
-      </section>
+    <script>
+      const steps = Array.from(document.querySelectorAll(".step"));
+      const progressBar = document.getElementById("progressBar");
+      const progressLabel = document.getElementById("progressLabel");
+      const backBtn = document.getElementById("backBtn");
+      const nextBtn = document.getElementById("nextBtn");
+      const submitBtn = document.getElementById("submitBtn");
+      const errorMsg = document.getElementById("errorMsg");
+      const form = document.getElementById("wizard");
+      let i = 0;
 
-      <!-- Step 9: Services -->
-      <section class="step">
-        <label class="question-label"><span class="step-indicator" data-step="8">8→</span> What do you need help with? <span class="text-red-500">*</span></label>
-        <p class="helper-text">(please select at least one service)</p>
-        <div class="mt-4">
-          <label class="checkbox-card">
-            <input type="checkbox" name="services" value="Paid Ads" required>
-            <span class="radio-letter">A</span>
-            <span class="radio-label">Paid Ads</span>
-            <span class="radio-checkmark">✓</span>
-          </label>
-          <label class="checkbox-card">
-            <input type="checkbox" name="services" value="UGC / Creators" required>
-            <span class="radio-letter">B</span>
-            <span class="radio-label">UGC / Creators</span>
-            <span class="radio-checkmark">✓</span>
-          </label>
-          <label class="checkbox-card">
-            <input type="checkbox" name="services" value="Content System" required>
-            <span class="radio-letter">C</span>
-            <span class="radio-label">Content System</span>
-            <span class="radio-checkmark">✓</span>
-          </label>
-          <label class="checkbox-card">
-            <input type="checkbox" name="services" value="CRO / Funnels" required>
-            <span class="radio-letter">D</span>
-            <span class="radio-label">CRO / Funnels</span>
-            <span class="radio-checkmark">✓</span>
-          </label>
-        </div>
-      </section>
+      function showStep(index) {
+        steps.forEach((s, idx) => s.classList.toggle("active", idx === index));
+        backBtn.disabled = index === 0;
+        nextBtn.classList.toggle("hidden", index === steps.length - 1);
+        submitBtn.classList.toggle("hidden", index !== steps.length - 1);
+        const pct = Math.round(((index + 1) / steps.length) * 100);
+        progressBar.style.width = pct + "%";
+        progressLabel.textContent = `Step ${index + 1} of ${steps.length}`;
+        errorMsg.textContent = "";
 
-      <!-- Step 10: Goals -->
-      <section class="step">
-        <label class="question-label"><span class="step-indicator" data-step="9">9→</span> Goals (next 90 days) <span class="text-red-500">*</span></label>
-        <p class="helper-text">(please describe your goals for the next 90 days)</p>
-        <textarea name="goals" required rows="4" class="underlined-input w-full resize-none" placeholder="Type your answer here..."></textarea>
-        <div class="mt-6 text-sm text-slate-600">
-          <label class="inline-flex items-start gap-2"><input type="checkbox" required name="consent" class="mt-1 w-4 h-4"> I agree to receive emails about my application and growth audit.</label>
-        </div>
-      </section>
-
-      <!-- Step 11: How did you hear about us -->
-      <section class="step">
-        <label class="question-label"><span class="step-indicator" data-step="10">10→</span> How did you hear about us? <span class="text-red-500">*</span></label>
-        <p class="helper-text">(please select one option)</p>
-        <div class="mt-4">
-          <label class="radio-card">
-            <input type="radio" name="hear-about" value="Youtube" required>
-            <span class="radio-letter">A</span>
-            <span class="radio-label">Youtube</span>
-            <span class="radio-checkmark">✓</span>
-          </label>
-          <label class="radio-card">
-            <input type="radio" name="hear-about" value="Instagram" required>
-            <span class="radio-letter">B</span>
-            <span class="radio-label">Instagram</span>
-            <span class="radio-checkmark">✓</span>
-          </label>
-          <label class="radio-card">
-            <input type="radio" name="hear-about" value="Tiktok" required>
-            <span class="radio-letter">C</span>
-            <span class="radio-label">Tiktok</span>
-            <span class="radio-checkmark">✓</span>
-          </label>
-          <label class="radio-card">
-            <input type="radio" name="hear-about" value="Email & SMS" required>
-            <span class="radio-letter">D</span>
-            <span class="radio-label">Email & SMS</span>
-            <span class="radio-checkmark">✓</span>
-          </label>
-          <label class="radio-card">
-            <input type="radio" name="hear-about" value="Word Of Mouth" required>
-            <span class="radio-letter">E</span>
-            <span class="radio-label">Word Of Mouth</span>
-            <span class="radio-checkmark">✓</span>
-          </label>
-          <label class="radio-card">
-            <input type="radio" name="hear-about" value="Other" required>
-            <span class="radio-letter">F</span>
-            <span class="radio-label">Other</span>
-            <span class="radio-checkmark">✓</span>
-          </label>
-        </div>
-      </section>
-
-      <!-- Nav buttons -->
-      <p id="errorMsg" class="text-sm font-medium text-red-600 mb-4"></p>
-      <div class="flex items-center justify-between pt-4">
-        <button type="button" id="backBtn" class="px-4 py-2 text-slate-700 disabled:opacity-40 border-none bg-transparent hover:underline" disabled>Back</button>
-        <div class="flex items-center gap-3">
-          <span class="text-xs text-slate-500 hidden sm:inline">press Enter ↵</span>
-          <button type="button" id="nextBtn" class="red-button">OK</button>
-          <button type="submit" id="submitBtn" class="hidden red-button">OK</button>
-        </div>
-      </div>
-    </form>
-  </main>
-
-  <script>
-    const steps = Array.from(document.querySelectorAll('.step'));
-    const progressBar = document.getElementById('progressBar');
-    const progressLabel = document.getElementById('progressLabel');
-    const backBtn = document.getElementById('backBtn');
-    const nextBtn = document.getElementById('nextBtn');
-    const submitBtn = document.getElementById('submitBtn');
-    const errorMsg = document.getElementById('errorMsg');
-    const form = document.getElementById('wizard');
-    let i = 0;
-
-    function showStep(index) {
-      steps.forEach((s, idx) => s.classList.toggle('active', idx === index));
-      backBtn.disabled = index === 0;
-      nextBtn.classList.toggle('hidden', index === steps.length - 1);
-      submitBtn.classList.toggle('hidden', index !== steps.length - 1);
-      const pct = Math.round(((index+1) / steps.length) * 100);
-      progressBar.style.width = pct + '%';
-      progressLabel.textContent = `Step ${index+1} of ${steps.length}`;
-      errorMsg.textContent = '';
-      
-      // Update step indicators dynamically
-      steps.forEach((step, idx) => {
-        const stepIndicator = step.querySelector('.step-indicator');
-        if (stepIndicator) {
-          stepIndicator.textContent = `${idx + 1}→`;
-        }
-      });
-    }
-
-    function validateCurrent() {
-      const current = steps[i];
-      
-      // Handle services step (checkboxes)
-      if (i === 7) { // Step 9: Services (0-indexed)
-        const checkboxes = current.querySelectorAll('input[type="checkbox"]');
-        const checkedBoxes = Array.from(checkboxes).filter(cb => cb.checked);
-        if (checkedBoxes.length === 0) {
-          return false;
-        }
-        return true;
+        // Update step indicators dynamically
+        steps.forEach((step, idx) => {
+          const stepIndicator = step.querySelector(".step-indicator");
+          if (stepIndicator) {
+            stepIndicator.textContent = `${idx + 1}→`;
+          }
+        });
       }
-      
-      // Handle Monthly revenue step (radio buttons)
-      if (i === 5) { // Step 7: Monthly revenue (0-indexed)
-        const radios = current.querySelectorAll('input[type="radio"][name="revenue"]');
-        const checkedRadio = Array.from(radios).find(r => r.checked);
-        if (!checkedRadio) {
-          return false;
-        }
-        return true;
-      }
-      
-      // Handle Marketing budget step (radio buttons)
-      if (i === 6) { // Step 8: Marketing budget (0-indexed)
-        const radios = current.querySelectorAll('input[type="radio"][name="budget"]');
-        const checkedRadio = Array.from(radios).find(r => r.checked);
-        if (!checkedRadio) {
-          return false;
-        }
-        return true;
-      }
-      
-      // Handle How did you hear about us step (radio buttons)
-      if (i === 9) { // Step 11: How did you hear about us (0-indexed)
-        const radios = current.querySelectorAll('input[type="radio"][name="hear-about"]');
-        const checkedRadio = Array.from(radios).find(r => r.checked);
-        if (!checkedRadio) {
-          return false;
-        }
-        return true;
-      }
-      
-      // Handle other steps
-      const input = current.querySelector('input, select, textarea');
-      if (!input) return true;
-      
-      if (input.hasAttribute('required') && !input.value.trim()) {
-        return false;
-      }
-      
-      if (input.type === 'email') {
-        const ok = /[^@\s]+@[^@\s]+\.[^@\s]+/.test(input.value);
-        return ok;
-      }
-      
-      if (input.type === 'url') {
-        if (!input.value.trim()) return true; // Website is optional
-        try {
-          new URL(input.value);
+
+      function validateCurrent() {
+        const current = steps[i];
+
+        // Handle services step (checkboxes)
+        if (i === 7) {
+          // Step 9: Services (0-indexed)
+          const checkboxes = current.querySelectorAll('input[type="checkbox"]');
+          const checkedBoxes = Array.from(checkboxes).filter(
+            (cb) => cb.checked
+          );
+          if (checkedBoxes.length === 0) {
+            return false;
+          }
           return true;
-        } catch {
+        }
+
+        // Handle Monthly revenue step (radio buttons)
+        if (i === 5) {
+          // Step 7: Monthly revenue (0-indexed)
+          const radios = current.querySelectorAll(
+            'input[type="radio"][name="revenue"]'
+          );
+          const checkedRadio = Array.from(radios).find((r) => r.checked);
+          if (!checkedRadio) {
+            return false;
+          }
+          return true;
+        }
+
+        // Handle Marketing budget step (radio buttons)
+        if (i === 6) {
+          // Step 8: Marketing budget (0-indexed)
+          const radios = current.querySelectorAll(
+            'input[type="radio"][name="budget"]'
+          );
+          const checkedRadio = Array.from(radios).find((r) => r.checked);
+          if (!checkedRadio) {
+            return false;
+          }
+          return true;
+        }
+
+        // Handle How did you hear about us step (radio buttons)
+        if (i === 9) {
+          // Step 11: How did you hear about us (0-indexed)
+          const radios = current.querySelectorAll(
+            'input[type="radio"][name="hear-about"]'
+          );
+          const checkedRadio = Array.from(radios).find((r) => r.checked);
+          if (!checkedRadio) {
+            return false;
+          }
+          return true;
+        }
+
+        // Handle other steps
+        const input = current.querySelector("input, select, textarea");
+        if (!input) return true;
+
+        if (input.hasAttribute("required") && !input.value.trim()) {
           return false;
         }
-      }
-      
-      return true;
-    }
 
-    backBtn.addEventListener('click', () => { i = Math.max(0, i-1); showStep(i); });
-    nextBtn.addEventListener('click', () => {
-      if (!validateCurrent()) { errorMsg.textContent = 'Please complete this field to continue.'; return; }
-      i = Math.min(steps.length-1, i+1);
-      showStep(i);
-    });
-    
-    // Enter key support
-    form.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' && e.target.tagName !== 'TEXTAREA' && !e.target.matches('button')) {
-        e.preventDefault();
-        if (!nextBtn.classList.contains('hidden')) {
-          nextBtn.click();
-        } else if (!submitBtn.classList.contains('hidden')) {
-          submitBtn.click();
+        if (input.type === "email") {
+          const ok = /[^@\s]+@[^@\s]+\.[^@\s]+/.test(input.value);
+          return ok;
         }
-      }
-    });
 
-    form.addEventListener('submit', function(e) {
-      if (i === steps.length - 1) {
-        // Only prevent on last step to show loading
-        e.preventDefault();
-        submitBtn.disabled = true;
-        submitBtn.textContent = 'Submitting...';
-        
-        // Collect all form data
-        const formData = new FormData(form);
-        const entries = [];
-        const entriesForSheet = [];
-        
-        // Build data for both Netlify and Google Sheets
-        for (let [key, value] of formData.entries()) {
-          if (key !== 'form-name' && key !== 'bot-field' && key !== 'subject') {
-            entries.push(`${encodeURIComponent(key)}=${encodeURIComponent(value)}`);
-            entriesForSheet.push(`${encodeURIComponent(key)}=${encodeURIComponent(value)}`);
+        if (input.type === "url") {
+          if (!input.value.trim()) return true; // Website is optional
+          try {
+            new URL(input.value);
+            return true;
+          } catch {
+            return false;
           }
         }
-        
-        // Add form-name for Netlify
-        entries.unshift('form-name=application');
-        
-        // Submit to both Netlify AND Google Sheets in parallel
-        Promise.all([
-          // Submit to Netlify's built-in form endpoint
-          fetch('/', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/x-www-form-urlencoded'
-            },
-            body: entries.join('&')
-          }),
-          // Submit to Google Sheets (if available)
-          fetch('/.netlify/functions/submit-to-sheet', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/x-www-form-urlencoded'
-            },
-            body: entriesForSheet.join('&')
-          }).catch((error) => {
-            // Log error but don't block form submission
-            console.error('Google Sheets submission error:', error);
-            console.log('Form still saved to Netlify Forms');
-            return { ok: true }; // Continue even if Google Sheets fails
-          })
-        ])
-        .then(() => {
-          // Success - redirect to thank you
-          window.location.href = 'thank-you.html';
-        })
-        .catch(() => {
-          // Error
-          submitBtn.disabled = false;
-          submitBtn.textContent = 'Submit';
-          errorMsg.textContent = 'Submission failed. Please try again.';
-        });
-      }
-    });
 
-    showStep(i);
-    
-    // Handle radio card active states
-    document.querySelectorAll('.radio-card input[type="radio"]').forEach(radio => {
-      radio.addEventListener('change', function() {
-        // Remove active class from all cards in the same group
-        const name = this.name;
-        document.querySelectorAll(`input[name="${name}"]`).forEach(r => {
-          r.closest('.radio-card')?.classList.remove('active');
+        return true;
+      }
+
+      backBtn.addEventListener("click", () => {
+        i = Math.max(0, i - 1);
+        showStep(i);
+      });
+      nextBtn.addEventListener("click", () => {
+        if (!validateCurrent()) {
+          errorMsg.textContent = "Please complete this field to continue.";
+          return;
+        }
+        i = Math.min(steps.length - 1, i + 1);
+        showStep(i);
+      });
+
+      // Enter key support
+      form.addEventListener("keydown", (e) => {
+        if (
+          e.key === "Enter" &&
+          e.target.tagName !== "TEXTAREA" &&
+          !e.target.matches("button")
+        ) {
+          e.preventDefault();
+          if (!nextBtn.classList.contains("hidden")) {
+            nextBtn.click();
+          } else if (!submitBtn.classList.contains("hidden")) {
+            submitBtn.click();
+          }
+        }
+      });
+
+      form.addEventListener("submit", function (e) {
+        if (i === steps.length - 1) {
+          // Only prevent on last step to show loading
+          e.preventDefault();
+          submitBtn.disabled = true;
+          submitBtn.textContent = "Submitting...";
+
+          // Collect all form data
+          const formData = new FormData(form);
+          const entries = [];
+          const entriesForSheet = [];
+
+          // Build data for both Netlify and Google Sheets
+          for (let [key, value] of formData.entries()) {
+            if (
+              key !== "form-name" &&
+              key !== "bot-field" &&
+              key !== "subject"
+            ) {
+              entries.push(
+                `${encodeURIComponent(key)}=${encodeURIComponent(value)}`
+              );
+              entriesForSheet.push(
+                `${encodeURIComponent(key)}=${encodeURIComponent(value)}`
+              );
+            }
+          }
+
+          // Add form-name for Netlify
+          entries.unshift("form-name=application");
+
+          // Submit to both Netlify AND Google Sheets in parallel
+          Promise.all([
+            // Submit to Netlify's built-in form endpoint
+            fetch("/", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+              },
+              body: entries.join("&"),
+            }),
+            // Submit to Google Sheets (if available)
+            fetch("/.netlify/functions/submit-to-sheet", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+              },
+              body: entriesForSheet.join("&"),
+            }).catch((error) => {
+              // Log error but don't block form submission
+              console.error("Google Sheets submission error:", error);
+              console.log("Form still saved to Netlify Forms");
+              return { ok: true }; // Continue even if Google Sheets fails
+            }),
+          ])
+            .then(() => {
+              // Success - redirect to thank you
+              // window.location.href = 'thank-you.html';
+            })
+            .catch(() => {
+              // Error
+              submitBtn.disabled = false;
+              submitBtn.textContent = "Submit";
+              errorMsg.textContent = "Submission failed. Please try again.";
+            });
+        }
+      });
+
+      showStep(i);
+
+      // Handle radio card active states
+      document
+        .querySelectorAll('.radio-card input[type="radio"]')
+        .forEach((radio) => {
+          radio.addEventListener("change", function () {
+            // Remove active class from all cards in the same group
+            const name = this.name;
+            document.querySelectorAll(`input[name="${name}"]`).forEach((r) => {
+              r.closest(".radio-card")?.classList.remove("active");
+            });
+            // Add active class to checked card
+            if (this.checked) {
+              this.closest(".radio-card")?.classList.add("active");
+            }
+          });
         });
-        // Add active class to checked card
-        if (this.checked) {
-          this.closest('.radio-card')?.classList.add('active');
-        }
-      });
-    });
-    
-    // Handle checkbox card active states (multi-select)
-    document.querySelectorAll('.checkbox-card input[type="checkbox"]').forEach(checkbox => {
-      checkbox.addEventListener('change', function() {
-        const card = this.closest('.checkbox-card');
-        if (this.checked) {
-          card?.classList.add('active');
-        } else {
-          card?.classList.remove('active');
-        }
-      });
-    });
-  </script>
-</body>
+
+      // Handle checkbox card active states (multi-select)
+      document
+        .querySelectorAll('.checkbox-card input[type="checkbox"]')
+        .forEach((checkbox) => {
+          checkbox.addEventListener("change", function () {
+            const card = this.closest(".checkbox-card");
+            if (this.checked) {
+              card?.classList.add("active");
+            } else {
+              card?.classList.remove("active");
+            }
+          });
+        });
+    </script>
+  </body>
 </html>
