@@ -475,7 +475,7 @@
             <span class="radio-label">$10k - $30k</span>
           </label>
           <label class="radio-card">
-            <input type="radio" name="revenue" value="+$30k" required>
+            <input type="radio" name="revenue" value="$30k+" required>
             <span class="radio-letter">E</span>
             <span class="radio-label">+$30k</span>
           </label>
@@ -742,44 +742,43 @@
         // Collect all form data
         const formData = new FormData(form);
         const entries = [];
+        const entriesForSheet = [];
         
-        // Build data for Netlify
+        // Build data for both Netlify and Google Sheets
         for (let [key, value] of formData.entries()) {
           if (key !== 'form-name' && key !== 'bot-field' && key !== 'subject') {
             entries.push(`${encodeURIComponent(key)}=${encodeURIComponent(value)}`);
+            entriesForSheet.push(`${encodeURIComponent(key)}=${encodeURIComponent(value)}`);
           }
         }
         
         // Add form-name for Netlify
         entries.unshift('form-name=application');
         
-        // Submit to Netlify's built-in form endpoint
-        fetch('/', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
-          },
-          body: entries.join('&')
-        })
-        .then(() => {
-          // Success - redirect to thank you
-          window.location.href = 'thank-you.html';
-        })
-        .catch(() => {
-          // Error
-          submitBtn.disabled = false;
-          submitBtn.textContent = 'Submit';
-          errorMsg.textContent = 'Submission failed. Please try again.';
-        });
-
-        // Submit to Google Sheets
-        fetch('/.netlify/functions/submitForm', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(entries)
-        })
+        // Submit to both Netlify AND Google Sheets in parallel
+        Promise.all([
+          // Submit to Netlify's built-in form endpoint
+          fetch('/', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: entries.join('&')
+          }),
+          // Submit to Google Sheets (if available)
+          fetch('/.netlify/functions/submit-to-sheet', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: entriesForSheet.join('&')
+          }).catch((error) => {
+            // Log error but don't block form submission
+            console.error('Google Sheets submission error:', error);
+            console.log('Form still saved to Netlify Forms');
+            return { ok: true }; // Continue even if Google Sheets fails
+          })
+        ])
         .then(() => {
           // Success - redirect to thank you
           window.location.href = 'thank-you.html';

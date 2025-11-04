@@ -2,9 +2,16 @@
   command = "echo 'No build needed'"
   publish = "."
 
-# Using Netlify Forms - no serverless functions needed!
+# Functions directory for Google Sheets integration
+[functions]
+  directory = "netlify/functions"
+
+# Using Netlify Forms for primary form storage
 # Your form in apply.html has the 'netlify' attribute
 # which enables automatic form handling when deployed to Netlify.
 
 # Submissions will appear in: Netlify Dashboard → Forms
-# No environment variables needed!
+
+# Optional: Google Sheets integration
+# Follow GOOGLE_SHEETS_SETUP.md to set up automatic Google Sheets syncing
+# Requires environment variables: GOOGLE_SERVICE_ACCOUNT_EMAIL, GOOGLE_PRIVATE_KEY, GOOGLE_SPREADSHEET_ID

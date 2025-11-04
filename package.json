@@ -1,0 +1,17 @@
+{
+  "name": "brandlift-co",
+  "version": "1.0.0",
+  "description": "Brand Lift Co application form with Netlify Forms integration",
+  "main": "index.html",
+  "scripts": {
+    "dev": "netlify dev",
+    "build": "echo 'No build needed for static site'",
+    "start": "npm run dev"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "googleapis": "^128.0.0"
+  }
+}
