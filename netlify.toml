@@ -1,14 +1,59 @@
+functionsDirectory = "D:\\STAR\\Brandliftco\\netlify\\functions"
+functionsDirectoryOrigin = "config"
+headers = []
+redirects = []
+
 [build]
-  command = "echo 'No build process needed'"
-  publish = "."
-  functions = "./netlify/functions"
+publish = "D:\\STAR\\Brandliftco"
+publishOrigin = "config"
+commandOrigin = "config"
+command = "echo 'No build needed'"
+functions = "D:\\STAR\\Brandliftco\\netlify\\functions"
+
+  [build.environment]
+
+  [build.processing]
+
+    [build.processing.css]
+
+    [build.processing.html]
+
+    [build.processing.images]
+
+    [build.processing.js]
+
+  [build.services]
 
 [functions]
-  included_files = ["./emails/**"]
+
+  [functions.emails]
+  included_files = [
+    "./emails/**"
+  ]
+
+  [functions."*"]
 
 [[plugins]]
-  package = "@netlify/plugin-emails"
-  pinned_version = "1"
+origin = "ui"
+package = "@netlify/plugin-lighthouse"
+
+  [plugins.inputs]
 
 [[plugins]]
-  package = "@netlify/plugin-lighthouse"
+origin = "ui"
+package = "netlify-plugin-visual-diff"
+
+  [plugins.inputs]
+
+[[plugins]]
+origin = "ui"
+package = "netlify-plugin-cypress"
+
+  [plugins.inputs]
+
+[[plugins]]
+origin = "ui"
+package = "@netlify/plugin-emails"
+pinned_version = "1"
+
+  [plugins.inputs]
